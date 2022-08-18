@@ -21,7 +21,7 @@ function setValuebyID(elementID, newValue) {
   htmlElement.innerText = newValue;
 }
 
-// Check is NaN
+// Check is NaN have to use later
 function reallyIsNan(param) {
   if (Number.isNaN(param)) {
     return false;
