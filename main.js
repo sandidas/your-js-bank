@@ -10,7 +10,7 @@ function getValuefromInputField(inputFieldId) {
   const inputField = document.getElementById(inputFieldId);
   const inputFieldValueString = inputField.value;
   const inputFieldValue = parseFloat(inputFieldValueString);
-  console.log(inputFieldValue);
+  // console.log(inputFieldValue);
   inputField.value = "";
   return inputFieldValue;
 }
@@ -21,14 +21,38 @@ function setValuebyID(elementID, newValue) {
   htmlElement.innerText = newValue;
 }
 
-// Check is NaN have to use later
-function reallyIsNan(param) {
-  if (Number.isNaN(param)) {
-    return false;
+function numberValidation(param) {
+  // return true means error
+  const ruleFormat = /^[0-9]+$/;
+
+  if (!ruleFormat.test(param)) {
+    // if number not found in parameter then return true. means error found
+    return true;
+  } else if (isNaN(param)) {
+    return true;
   } else {
-    return param;
+    return false;
   }
 }
+function speciaCharValidation(param) {
+  // return true means error
+  const ruleFormat = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+  if (ruleFormat.test(param)) {
+    //find speciall char. If found then true.
+    return true;
+  } else {
+    return false;
+  }
+}
+function notLessZero(param) {
+  // return true means error
+  if (param < 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function errorReport(param) {
   alert(param);
 }
@@ -40,11 +64,12 @@ document.getElementById("deposit-now").addEventListener("click", function () {
   // get deposit from input filed
   const depositAmount = getValuefromInputField("deposit-amount");
 
-  // :: ERROR REPORTING: if not a number
-  if (isNaN(depositAmount)) {
-    alert("Please provide a valid number");
-    return; // to stop here
+  // :: ERROR REPORTING: Not less than 0 || not a number || Speciall Char
+  if (notLessZero(depositAmount) == true || numberValidation(depositAmount) == true || speciaCharValidation(depositAmount) == true) {
+    errorReport("Please provide a valid number.");
+    return;
   }
+
   // get current deposit amount from
   const balanceDepositAmount = getInnerValueFromId("deposit");
   // additiona new and balance deposit
@@ -64,11 +89,13 @@ document.getElementById("deposit-now").addEventListener("click", function () {
 document.getElementById("withdraw-now").addEventListener("click", function () {
   //:: STEP ONE NEW WITHDORW
   const newWithdrawAmount = getValuefromInputField("withdraw-amount");
-  // :: ERROR REPORTING: if not a number
-  if (isNaN(newWithdrawAmount)) {
-    alert("Please provide a valid number");
-    return; // to stop here
+
+  // :: ERROR REPORTING: Not less than 0 || not a number || Speciall Char
+  if (notLessZero(newWithdrawAmount) == true || numberValidation(newWithdrawAmount) == true || speciaCharValidation(newWithdrawAmount) == true) {
+    errorReport("Please provide a valid number.");
+    return;
   }
+
   // Check current balance
   const currentTotalBalance = getInnerValueFromId("balance");
   // ERROR REPORT if withdraw is getter than current balance
