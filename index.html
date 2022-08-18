@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fathers Bank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="container mx-auto">
+      <h1 class="text-5xl font-black text-blue-600 text-center my-10">Your Fathers <span class="text-sky-800">Bank</span></h1>
+    </header>
+    <main class="container mx-auto">
+      <section class="grid grid-cols-3 gap-10 text-center w-88">
+        <!-- Deposit  -->
+        <div class="bg-gradient-to-r from-blue-800 via-blue-500 to-blue-800 text-white font-bold rounded-lg py-8">
+          <h2 class="text-3xl uppercase">Deposit</h2>
+          <span class="text-dark">$</span><span class="text-5xl" id="deposit">0</span>
+        </div>
+
+        <!-- Withdraw  -->
+        <div class="bg-gradient-to-r from-blue-800 via-blue-500 to-blue-800 text-white font-bold rounded-lg py-8">
+          <h2 class="text-3xl uppercase">Withdraw</h2>
+          <span class="text-dark">$</span><span class="text-5xl" id="withdraw">0</span>
+        </div>
+
+        <!-- Balance  -->
+        <div class="bg-gradient-to-r from-blue-800 via-blue-500 to-blue-800 text-white font-bold rounded-lg py-8">
+          <h2 class="text-3xl uppercase">Balance</h2>
+          <span class="text-dark">$</span><span class="text-5xl" id="balance">1000</span>
+        </div>
+      </section>
+      <section class="grid grid-cols-2 gap-10 text-center mt-10">
+        <!-- Deposit Now -->
+        <div class="bg-gradient-to-r from-blue-800 via-blue-500 to-blue-800 text-white font-bold rounded-lg py-8">
+          <h2 class="text-3xl uppercase">Deposit Now</h2>
+          <input type="text" placeholder="$ Amount  you want to deposit" id="deposit-amount" class="text-1xl mt-2 rounded-lg text-sky-400/100 p-2 text-center w-3/4 " />
+
+          <button class="g-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 px-5 py-3 mt-2 rounded bg-pink-900" id="deposit-now">Save Changes</button>
+        </div>
+
+        <!-- Withdraw Now -->
+        <div class="bg-gradient-to-r from-blue-800 via-blue-500 to-blue-800 text-white font-bold rounded-lg py-8">
+          <h2 class="text-3xl uppercase">Withdraw Now</h2>
+          <input type="text" placeholder="$ Amount  you want to Withdraw" id="withdraw-amount" class="text-1xl mt-2 rounded-lg text-sky-400/100 p-2 text-center w-3/4" />
+
+          <button class="g-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 px-5 py-3 mt-2 rounded bg-pink-900" id="withdraw-now">Save Changes</button>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="main.js"></script>
+  </body>
+</html>
